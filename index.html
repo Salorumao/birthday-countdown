@@ -145,6 +145,26 @@ h1{
   line-height:1.8;
   color:#ffe6eb;
 }
+
+.secret-btn{
+  margin-top:15px;
+  padding:12px 25px;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(to right,#ff758c,#ff7eb3);
+  color:white;
+  cursor:pointer;
+}
+
+.secret-msg{
+  display:none;
+  margin-top:15px;
+  padding:15px;
+  background:rgba(255,255,255,0.08);
+  border-radius:15px;
+  color:#ffe6eb;
+}
+
 </style>
 </head>
 
@@ -166,6 +186,7 @@ h1{
   <div class="time-box"><h2 id="seconds">00</h2><p>Seconds</p></div>
 </div>
 
+
 <!-- GALLERY -->
 <div class="gallery" id="gallery"></div>
 
@@ -183,7 +204,22 @@ h1{
 <p>
 You are not just a memory in my life, you are a feeling I never want to forget.  
 Every picture here holds a piece of my heart and a moment I will always cherish.  
-I hope your birthday brings you everything you’ve ever wished for.
+
+</p>
+<!-- SECRET BUTTON -->
+<button class="secret-btn" onclick="showSecret()">
+Click for a Secret Message 💌 Open Only On Your Birthday 
+</button>
+
+<!-- HIDDEN MESSAGE -->
+<p id="secretMsg" class="secret-msg">
+ We’ve been in this long-distance journey for 1.5 years, holding on to each other through calls, messages, missed yous, and counting down days until we could finally stop waiting and start living this together. And now it’s all becoming real — in just few days we’ll be living together, and next year we’ll be getting married. It still feels a little unreal sometimes, but with you, even the impossible started feeling possible.
+
+And today, on your birthday, I just want to pause everything and tell you how grateful I am that you were born — because your existence changed my entire world. You became my comfort, my home, even from miles away.
+
+I still remember our first meet… and yes, I was late. But if there’s one thing I want you to know today, on your special day, it’s this — I may have been late that day, but I will never be late in your life again. Not in love, not in effort, not in showing up for you. From now on, I choose you fully, constantly, and endlessly.
+
+Happy Birthday ❤️ You are not just my love — you are my forever.
 </p>
 </div>
 
@@ -207,34 +243,34 @@ setInterval(()=>{
 
 /* 30 UNIQUE MESSAGES */
 const messages = [
-"You are my favorite person in the world ❤️",
-"I smile every time I think of you 😊",
-"This memory will always stay in my heart 💕",
-"You make everything better just by being you ✨",
-"I still remember this moment clearly 🥺",
-"You mean more than words can say ❤️",
-"This was one of my happiest days with you 💫",
+"You became a feeling I never expected, but now I don’t want to lose ❤️",
+"Every moment with you stays in my heart longer than I can explain 💕",
+"I smile every time I think about you, even on my worst days 😊",
+"You made ordinary moments feel like something special ✨",
+"I don’t say it enough, but you matter to me a lot ❤️",
+"Some memories don’t fade — they just grow stronger with time 💭",
+"You are my favorite kind of thought 💕",
 "You are my safe place 💖",
-"I cherish this memory deeply 🌸",
+"Being around you feels like peace I didn’t know I needed 🌸",
 "You make life feel softer 💕",
 "I never want to lose moments like this ❤️",
 "You are unforgettable to me ✨",
-"This picture means everything 🥰",
+"You are the reason I smile at random times ❤️",
 "You make me feel calm and happy 🌷",
 "I love how we laugh together 😂❤️",
 "You are my comfort person 💕",
-"This moment is pure happiness 🌟",
+"I never planned to feel this way, but I do 💫",
 "I’ll always remember this day 🥹",
 "You are very special to me ❤️",
-"This memory makes me smile instantly 😊",
+"I find happiness in the smallest memories with you 💕",
 "You are my favorite chapter 📖❤️",
 "I feel lucky to know you 🌸",
 "You bring peace to my heart 💕",
-"This moment = happiness forever ✨",
+"I wish I could freeze moments like this forever ⏳",
 "You are deeply important to me ❤️",
 "I never take you for granted 💫",
 "You make life beautiful 🌷",
-"This memory is priceless 💖",
+"I feel lucky just knowing you exist in my life 🌸",
 "You are always in my thoughts ❤️",
 "I will always cherish you 💕"
 ];
@@ -259,6 +295,10 @@ function openPopup(index){
 
 function closePopup(){
   document.getElementById("popup").style.display = "none";
+}
+
+function showSecret(){
+  document.getElementById("secretMsg").style.display = "block";
 }
 
 /* HEARTS */
