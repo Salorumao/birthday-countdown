@@ -113,30 +113,34 @@
       line-height:1.8;
     }
 
+    /* ✅ UPDATED GALLERY */
     .gallery{
       margin-top:60px;
       display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
       gap:20px;
       width:100%;
       max-width:1000px;
     }
 
     .photo{
-      height:260px;
+      height:240px;
       border-radius:25px;
+      overflow:hidden;
       background:rgba(255,255,255,0.08);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color:#bbb;
-      font-size:1rem;
-      border:2px dashed rgba(255,255,255,0.2);
+      border:2px solid rgba(255,255,255,0.1);
       transition:0.3s;
     }
 
+    .photo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
     .photo:hover{
-      transform:scale(1.03);
+      transform:scale(1.05);
     }
 
     button{
@@ -166,14 +170,8 @@
     }
 
     @keyframes fadeIn{
-      from{
-        opacity:0;
-        transform:translateY(20px);
-      }
-      to{
-        opacity:1;
-        transform:translateY(0);
-      }
+      from{opacity:0; transform:translateY(20px);}
+      to{opacity:1; transform:translateY(0);}
     }
 
     footer{
@@ -184,17 +182,9 @@
     }
 
     @media(max-width:768px){
-      h1{
-        font-size:2.8rem;
-      }
-
-      .time-box{
-        width:120px;
-      }
-
-      .time-box h2{
-        font-size:2.2rem;
-      }
+      h1{font-size:2.8rem;}
+      .time-box{width:120px;}
+      .time-box h2{font-size:2.2rem;}
     }
   </style>
 </head>
@@ -212,27 +202,10 @@
     </p>
 
     <div class="countdown">
-
-      <div class="time-box">
-        <h2 id="days">00</h2>
-        <p>Days</p>
-      </div>
-
-      <div class="time-box">
-        <h2 id="hours">00</h2>
-        <p>Hours</p>
-      </div>
-
-      <div class="time-box">
-        <h2 id="minutes">00</h2>
-        <p>Minutes</p>
-      </div>
-
-      <div class="time-box">
-        <h2 id="seconds">00</h2>
-        <p>Seconds</p>
-      </div>
-
+      <div class="time-box"><h2 id="days">00</h2><p>Days</p></div>
+      <div class="time-box"><h2 id="hours">00</h2><p>Hours</p></div>
+      <div class="time-box"><h2 id="minutes">00</h2><p>Minutes</p></div>
+      <div class="time-box"><h2 id="seconds">00</h2><p>Seconds</p></div>
     </div>
 
     <div class="message-section">
@@ -240,52 +213,38 @@
 
       <p>
         Replace this text with your own message.<br><br>
-
-        You can write:
-        - cute memories <br>
-        - reasons why you love him <br>
-        - inside jokes <br>
-        - future plans <br>
-        - birthday wishes <br><br>
-
-        Make this section personal and emotional ❤️
+        Add memories, jokes, wishes, and love ❤️
       </p>
     </div>
 
+    <!-- ✅ 8 IMAGES -->
     <div class="gallery">
-
-        <img src="1.jpeg" class="photo">
-  	<img src="2.jpeg" class="photo">
-  	<img src="3.jpeg" class="photo">
-  	<img src="4.jpeg" class="photo">
-
+      <div class="photo"><img src="1.jpg"></div>
+      <div class="photo"><img src="2.jpg"></div>
+      <div class="photo"><img src="3.jpg"></div>
+      <div class="photo"><img src="4.jpg"></div>
+      <div class="photo"><img src="5.jpg"></div>
+      <div class="photo"><img src="6.jpg"></div>
+      <div class="photo"><img src="7.jpg"></div>
+      <div class="photo"><img src="8.jpg"></div>
     </div>
 
-    <button onclick="showMessage()">
-      Click For A Surprise ✨
-    </button>
+    <button onclick="showMessage()">Click For A Surprise ✨</button>
 
     <div class="hidden-message" id="secretMessage">
       Happy early birthday to the love of my life ❤️ <br><br>
-      No matter what happens, you’ll always be one of the most beautiful parts of my life. I hope this birthday brings you happiness, peace, success, and everything you deserve.
+      You mean everything to me. I hope this year brings you happiness, success, and peace.
     </div>
 
-    <footer>
-      Made with love ❤️
-    </footer>
+    <footer>Made with love ❤️</footer>
 
   </div>
 
   <script>
-
-    // COUNTDOWN
-
     const birthday = new Date("June 27, 2026 00:00:00").getTime();
 
     const timer = setInterval(function(){
-
       const now = new Date().getTime();
-
       const distance = birthday - now;
 
       const days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -300,23 +259,14 @@
 
       if(distance < 0){
         clearInterval(timer);
-
-        document.querySelector(".countdown").innerHTML = `
-          <h1 style="font-size:3rem;">
-            HAPPY BIRTHDAY ❤️🎉
-          </h1>
-        `;
+        document.querySelector(".countdown").innerHTML =
+          `<h1 style="font-size:3rem;">HAPPY BIRTHDAY ❤️🎉</h1>`;
       }
-
     },1000);
-
-    // SECRET MESSAGE
 
     function showMessage(){
       document.getElementById("secretMessage").style.display = "block";
     }
-
-    // FLOATING HEARTS
 
     const heartsContainer = document.getElementById("hearts");
 
@@ -331,13 +281,10 @@
 
       heartsContainer.appendChild(heart);
 
-      setTimeout(()=>{
-        heart.remove();
-      },10000);
+      setTimeout(()=>heart.remove(),10000);
     }
 
     setInterval(createHeart,300);
-
   </script>
 
 </body>
