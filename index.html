@@ -1,291 +1,278 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Countdown To Your Day ❤️</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Countdown To Your Day ❤️</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-  <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:'Poppins',sans-serif;
-    }
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
 
-    body{
-      background: linear-gradient(135deg,#0f0f0f,#1e1e1e,#2a2a2a);
-      color:white;
-      overflow-x:hidden;
-    }
+body{
+  background: linear-gradient(135deg,#0f0f0f,#1e1e1e,#2a2a2a);
+  color:white;
+  overflow-x:hidden;
+}
 
-    .hearts{
-      position:fixed;
-      width:100%;
-      height:100%;
-      overflow:hidden;
-      z-index:-1;
-    }
+/* HEAVARTS */
+.hearts{
+  position:fixed;
+  width:100%;
+  height:100%;
+  z-index:-1;
+}
 
-    .heart{
-      position:absolute;
-      color:rgba(255,255,255,0.15);
-      font-size:20px;
-      animation:float 10s linear infinite;
-    }
+.heart{
+  position:absolute;
+  color:rgba(255,255,255,0.15);
+  animation:float 10s linear infinite;
+}
 
-    @keyframes float{
-      0%{
-        transform:translateY(100vh) scale(0);
-      }
-      100%{
-        transform:translateY(-10vh) scale(1);
-      }
-    }
+@keyframes float{
+  0%{transform:translateY(100vh) scale(0);}
+  100%{transform:translateY(-10vh) scale(1);}
+}
 
-    .container{
-      min-height:100vh;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      align-items:center;
-      text-align:center;
-      padding:30px;
-    }
+.container{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  padding:30px;
+}
 
-    h1{
-      font-size:4rem;
-      margin-bottom:10px;
-      background:linear-gradient(to right,#ffb6c1,#ffd700);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-    }
+h1{
+  font-size:3.5rem;
+  background:linear-gradient(to right,#ffb6c1,#ffd700);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
 
-    .subtitle{
-      font-size:1.2rem;
-      max-width:700px;
-      margin-bottom:40px;
-      color:#ddd;
-    }
+.subtitle{
+  margin-top:10px;
+  color:#ddd;
+}
 
-    .countdown{
-      display:flex;
-      gap:20px;
-      flex-wrap:wrap;
-      justify-content:center;
-      margin-bottom:50px;
-    }
+/* COUNTDOWN */
+.countdown{
+  display:flex;
+  gap:15px;
+  flex-wrap:wrap;
+  margin:30px 0;
+}
 
-    .time-box{
-      background:rgba(255,255,255,0.08);
-      backdrop-filter:blur(10px);
-      border:1px solid rgba(255,255,255,0.1);
-      padding:25px;
-      border-radius:25px;
-      width:140px;
-      transition:0.3s;
-    }
+.time-box{
+  background:rgba(255,255,255,0.08);
+  padding:20px;
+  border-radius:15px;
+  width:120px;
+}
 
-    .time-box:hover{
-      transform:translateY(-5px);
-      background:rgba(255,255,255,0.12);
-    }
+.time-box h2{
+  color:#ffd700;
+  font-size:2rem;
+}
 
-    .time-box h2{
-      font-size:3rem;
-      color:#ffd700;
-    }
+/* GALLERY */
+.gallery{
+  margin-top:40px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(100px,1fr));
+  gap:10px;
+  width:100%;
+  max-width:1000px;
+}
 
-    .time-box p{
-      margin-top:5px;
-      color:#ccc;
-      font-size:1rem;
-    }
+.photo{
+  height:110px;
+  border-radius:12px;
+  overflow:hidden;
+  cursor:pointer;
+  transition:0.3s;
+}
 
-    .message-section{
-      max-width:800px;
-      margin-top:20px;
-      padding:30px;
-      background:rgba(255,255,255,0.06);
-      border-radius:30px;
-      line-height:1.8;
-    }
+.photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
 
-    /* ✅ UPDATED GALLERY */
-    .gallery{
-      margin-top:60px;
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-      gap:20px;
-      width:100%;
-      max-width:1000px;
-    }
+.photo:hover{
+  transform:scale(1.08);
+}
 
-    .photo{
-      height:240px;
-      border-radius:25px;
-      overflow:hidden;
-      background:rgba(255,255,255,0.08);
-      border:2px solid rgba(255,255,255,0.1);
-      transition:0.3s;
-    }
+/* POPUP */
+.popup{
+  display:none;
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  background:rgba(0,0,0,0.8);
+  justify-content:center;
+  align-items:center;
+  z-index:999;
+}
 
-    .photo img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-    }
+.popup-content{
+  background:#1e1e1e;
+  padding:25px;
+  border-radius:15px;
+  max-width:400px;
+}
 
-    .photo:hover{
-      transform:scale(1.05);
-    }
+.close{
+  float:right;
+  cursor:pointer;
+  font-size:22px;
+  color:#ff7eb3;
+}
 
-    button{
-      margin-top:40px;
-      padding:15px 35px;
-      border:none;
-      border-radius:50px;
-      background:linear-gradient(to right,#ff758c,#ff7eb3);
-      color:white;
-      font-size:1rem;
-      cursor:pointer;
-      transition:0.3s;
-      box-shadow:0 10px 25px rgba(255,118,140,0.3);
-    }
-
-    button:hover{
-      transform:scale(1.05);
-    }
-
-    .hidden-message{
-      display:none;
-      margin-top:30px;
-      font-size:1.2rem;
-      max-width:700px;
-      color:#ffe6eb;
-      animation:fadeIn 1s ease;
-    }
-
-    @keyframes fadeIn{
-      from{opacity:0; transform:translateY(20px);}
-      to{opacity:1; transform:translateY(0);}
-    }
-
-    footer{
-      margin-top:70px;
-      margin-bottom:20px;
-      color:#999;
-      font-size:0.9rem;
-    }
-
-    @media(max-width:768px){
-      h1{font-size:2.8rem;}
-      .time-box{width:120px;}
-      .time-box h2{font-size:2.2rem;}
-    }
-  </style>
+/* FINAL MESSAGE */
+.final{
+  margin-top:50px;
+  max-width:800px;
+  padding:25px;
+  background:rgba(255,255,255,0.06);
+  border-radius:15px;
+  line-height:1.8;
+  color:#ffe6eb;
+}
+</style>
 </head>
 
 <body>
 
-  <div class="hearts" id="hearts"></div>
+<div class="hearts" id="hearts"></div>
 
-  <div class="container">
+<div class="container">
 
-    <h1>Until Your Day ❤️</h1>
+<h1>Until Your Day ❤️</h1>
 
-    <p class="subtitle">
-      Counting down to the most special day because the most special person deserves the best birthday ever.
-    </p>
+<p class="subtitle">Every memory, every moment, every feeling 💕</p>
 
-    <div class="countdown">
-      <div class="time-box"><h2 id="days">00</h2><p>Days</p></div>
-      <div class="time-box"><h2 id="hours">00</h2><p>Hours</p></div>
-      <div class="time-box"><h2 id="minutes">00</h2><p>Minutes</p></div>
-      <div class="time-box"><h2 id="seconds">00</h2><p>Seconds</p></div>
-    </div>
+<!-- COUNTDOWN -->
+<div class="countdown">
+  <div class="time-box"><h2 id="days">00</h2><p>Days</p></div>
+  <div class="time-box"><h2 id="hours">00</h2><p>Hours</p></div>
+  <div class="time-box"><h2 id="minutes">00</h2><p>Minutes</p></div>
+  <div class="time-box"><h2 id="seconds">00</h2><p>Seconds</p></div>
+</div>
 
-    <div class="message-section">
-      <h2 style="margin-bottom:15px;">A Little Note For You 💌</h2>
+<!-- GALLERY -->
+<div class="gallery" id="gallery"></div>
 
-      <p>
-        Replace this text with your own message.<br><br>
-        Add memories, jokes, wishes, and love ❤️
-      </p>
-    </div>
-
-    <!-- ✅ 8 IMAGES -->
-    <div class="gallery">
-      <div class="photo"><img src="1.jpeg"></div>
-      <div class="photo"><img src="2.jpeg"></div>
-      <div class="photo"><img src="3.jpeg"></div>
-      <div class="photo"><img src="4.jpeg"></div>
-      <div class="photo"><img src="5.jpeg"></div>
-      <div class="photo"><img src="6.jpeg"></div>
-      <div class="photo"><img src="7.jpeg"></div>
-      <div class="photo"><img src="8.jpeg"></div>
-    </div>
-
-    <button onclick="showMessage()">Click For A Surprise ✨</button>
-
-    <div class="hidden-message" id="secretMessage">
-      Happy early birthday to the love of my life ❤️ <br><br>
-      You mean everything to me. I hope this year brings you happiness, success, and peace.
-    </div>
-
-    <footer>Made with love ❤️</footer>
-
+<!-- POPUP -->
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <span class="close" onclick="closePopup()">&times;</span>
+    <p id="popupText"></p>
   </div>
+</div>
 
-  <script>
-    const birthday = new Date("2026-06-27T00:00:00-06:00").getTime();
+<!-- FINAL MESSAGE -->
+<div class="final">
+<h2>For You ❤️</h2>
+<p>
+You are not just a memory in my life, you are a feeling I never want to forget.  
+Every picture here holds a piece of my heart and a moment I will always cherish.  
+I hope your birthday brings you everything you’ve ever wished for.
+</p>
+</div>
 
-    const timer = setInterval(function(){
-      const now = new Date().getTime();
-      const distance = birthday - now;
+</div>
 
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+<script>
 
-      document.getElementById("days").innerHTML = days;
-      document.getElementById("hours").innerHTML = hours;
-      document.getElementById("minutes").innerHTML = minutes;
-      document.getElementById("seconds").innerHTML = seconds;
+/* COUNTDOWN (REGINA TIME) */
+const birthday = new Date("2026-06-27T00:00:00-06:00").getTime();
 
-      if(distance < 0){
-        clearInterval(timer);
-        document.querySelector(".countdown").innerHTML =
-          `<h1 style="font-size:3rem;">HAPPY BIRTHDAY ❤️🎉</h1>`;
-      }
-    },1000);
+setInterval(()=>{
+  const now = new Date().getTime();
+  const d = birthday - now;
 
-    function showMessage(){
-      document.getElementById("secretMessage").style.display = "block";
-    }
+  document.getElementById("days").innerText = Math.floor(d/(1000*60*60*24));
+  document.getElementById("hours").innerText = Math.floor((d%(1000*60*60*24))/(1000*60*60));
+  document.getElementById("minutes").innerText = Math.floor((d%(1000*60*60))/(1000*60));
+  document.getElementById("seconds").innerText = Math.floor((d%(1000*60))/1000);
+},1000);
 
-    const heartsContainer = document.getElementById("hearts");
 
-    function createHeart(){
-      const heart = document.createElement("div");
-      heart.classList.add("heart");
-      heart.innerHTML = "❤";
+/* 30 UNIQUE MESSAGES */
+const messages = [
+"You are my favorite person in the world ❤️",
+"I smile every time I think of you 😊",
+"This memory will always stay in my heart 💕",
+"You make everything better just by being you ✨",
+"I still remember this moment clearly 🥺",
+"You mean more than words can say ❤️",
+"This was one of my happiest days with you 💫",
+"You are my safe place 💖",
+"I cherish this memory deeply 🌸",
+"You make life feel softer 💕",
+"I never want to lose moments like this ❤️",
+"You are unforgettable to me ✨",
+"This picture means everything 🥰",
+"You make me feel calm and happy 🌷",
+"I love how we laugh together 😂❤️",
+"You are my comfort person 💕",
+"This moment is pure happiness 🌟",
+"I’ll always remember this day 🥹",
+"You are very special to me ❤️",
+"This memory makes me smile instantly 😊",
+"You are my favorite chapter 📖❤️",
+"I feel lucky to know you 🌸",
+"You bring peace to my heart 💕",
+"This moment = happiness forever ✨",
+"You are deeply important to me ❤️",
+"I never take you for granted 💫",
+"You make life beautiful 🌷",
+"This memory is priceless 💖",
+"You are always in my thoughts ❤️",
+"I will always cherish you 💕"
+];
 
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = (Math.random() * 5 + 5) + "s";
-      heart.style.fontSize = (Math.random() * 20 + 10) + "px";
 
-      heartsContainer.appendChild(heart);
+/* CREATE 30 IMAGES */
+const gallery = document.getElementById("gallery");
 
-      setTimeout(()=>heart.remove(),10000);
-    }
+for(let i=1;i<=30;i++){
+  const div = document.createElement("div");
+  div.classList.add("photo");
 
-    setInterval(createHeart,300);
-  </script>
+  div.innerHTML = `<img src="image${i}.jpeg" onclick="openPopup(${i-1})">`;
+  gallery.appendChild(div);
+}
+
+/* POPUP */
+function openPopup(index){
+  document.getElementById("popupText").innerText = messages[index];
+  document.getElementById("popup").style.display = "flex";
+}
+
+function closePopup(){
+  document.getElementById("popup").style.display = "none";
+}
+
+/* HEARTS */
+setInterval(()=>{
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML = "❤";
+  heart.style.left = Math.random()*100+"vw";
+  heart.style.fontSize = (10+Math.random()*20)+"px";
+  document.getElementById("hearts").appendChild(heart);
+  setTimeout(()=>heart.remove(),10000);
+},300);
+
+</script>
 
 </body>
 </html>
